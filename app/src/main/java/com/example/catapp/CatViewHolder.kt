@@ -9,7 +9,8 @@ class CatViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
     private val binding = ItemCatBinding.bind(view)
 
-    fun bind(image:String){
+    fun bind(image:String, name:String){
         Picasso.get().load(image).into(binding.ivCat)
+        binding.ivCatName.text = name
     }
 }

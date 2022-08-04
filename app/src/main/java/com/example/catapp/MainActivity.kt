@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener{
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: CatAdapter
-    private val catImages = mutableListOf<String>()
+    private val catImages = mutableListOf<CatListModel>()
 
     override fun onQueryTextChange(newText: String?): Boolean {
         return true
@@ -60,14 +60,14 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener{
                 if(call.isSuccessful){
                     println(cats)
                     var objects = cats?: emptyList()
-                    var images: MutableList<String> = mutableListOf<String>()
+                    var images: MutableList<CatListModel> = mutableListOf<CatListModel>()
                     if(query.isNullOrEmpty()) {
                         for (s in objects) {
-                            images.add(s.image.url)
+                            images.add(CatListModel(image=s.image.url, name=s.name, id=s.id, description=s.description))
                         }
                     }else{
                         for (s in objects) {
-                            images.add(s.url)
+                            images.add(CatListModel(image=s.url, name=s.name, id=s.id, description = s.description))
                         }
                     }
                     catImages.clear()
