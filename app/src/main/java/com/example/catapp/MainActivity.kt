@@ -10,15 +10,17 @@ import com.example.catapp.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import android.util.Log
+import androidx.activity.viewModels
+import com.example.catapp.core.RetrofitHelper.getRetrofit
+import com.example.catapp.ui.viewmodel.CatViewModel
 
 class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener{
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: CatAdapter
     private val catImages = mutableListOf<CatListModel>()
+    private val catViewModel: CatViewModel by viewModels()
 
     override fun onQueryTextChange(newText: String?): Boolean {
         return true
@@ -31,12 +33,12 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener{
         return true
     }
 
-    private fun getRetrofit(): Retrofit {
+    /*private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl("https://api.thecatapi.com/v1/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-    }
+    }*/
 
     private fun showError() {
         Toast.makeText(this, "Han error occurred", Toast.LENGTH_SHORT).show()
