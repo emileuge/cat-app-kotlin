@@ -32,9 +32,11 @@ class CatDetails : AppCompatActivity() {
         }
 
         ivBtnBack.setOnClickListener{
-            val context = ivBtnBack.context
+            startActivity(Intent(ivBtnBack.context, MainActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+            //setContentView(R.layout.activity_main)
+            /*val context = ivBtnBack.context
             val intent = Intent(context, MainActivity::class.java)
-            context.startActivity(intent)
+            context.startActivity(intent)*/
         }
     }
 }
