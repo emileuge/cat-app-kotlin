@@ -10,8 +10,9 @@ class ApiService {
     private val retrofit = RetrofitHelper.getRetrofit()
     suspend fun getBreeds(): CatsResponse {
         return withContext(Dispatchers.IO) {
-            var response = retrofit.create(ApiClient::class.java).getCatsByBreeds("breeds?limit=15&api_key=eeaafac8-5268-4542-a4f5-72127eb38a55")
-            (response.body() ?: emptyList()) as CatsResponse
+            var response = retrofit.create(ApiClient::class.java).getCatsByBreeds("breeds?limit=50&api_key=eeaafac8-5268-4542-a4f5-72127eb38a55/")
+            println(response.body())
+            response.body() !!
         }
     }
 }

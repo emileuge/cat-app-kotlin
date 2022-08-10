@@ -49,12 +49,13 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener{
         catViewModel.catModel.observe(this, Observer {
             var objects = it?: emptyList()
             for (c in objects) {
+                println(c?.image?.url?: "")
                 catImages.add(
                     CatListModel(
-                        image = c.image.url,
-                        name = c.name,
-                        id = c.id,
-                        description = c.description
+                        image = c?.image?.url?: "",
+                        name = c?.name?: "",
+                        id = c?.id?: "",
+                        description = c?.description?: ""
                     )
                 )
             }
